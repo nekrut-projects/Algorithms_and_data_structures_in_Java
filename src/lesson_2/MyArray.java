@@ -91,6 +91,19 @@ public class MyArray {
                     swap(idx, idx + 1);
     }
 
+    public void sortBubble2() {
+        for (int iter = 0; iter < capacity / 2; iter++) {
+            for (int idx = 0; idx < capacity - 1; idx++) {
+                if (this.arr[idx] > this.arr[idx + 1]) {
+                    swap(idx, idx + 1);
+                }
+                if (arr[idx + 1] > arr[capacity - idx - 1] && idx < capacity - idx - 1) {
+                    swap(idx + 1, capacity - idx - 1);
+                }
+            }
+        }
+    }
+
     public void sortSelect() {
         for (int idx = 0; idx < capacity; idx++) {
             int curr = idx;
@@ -112,5 +125,85 @@ public class MyArray {
             }
             this.arr[move] = temp;
         }
+    }
+
+//    public int getCapacity(){
+//        return capacity;
+//    }
+//    void append(MyArray array){
+//        if (arr.length - capacity < array.getCapacity()){
+//            increaseSizeArray(arr.length + array.getCapacity());
+//        }
+//        System.arraycopy(array.arr, 0, arr, capacity, array.getCapacity() );
+//        capacity += array.getCapacity();
+//    }
+//
+//    private void increaseSizeArray(int newSize){
+//        int[] old = this.arr;
+//        this.arr = new int[newSize + 1];
+//        System.arraycopy(old, 0, arr, 0, old.length);
+//    }
+
+    public boolean isSortedArray(){
+        for (int i = 0; i < capacity - 1; i++) {
+            if (arr[i] > arr[i + 1])
+                return false;
+        }
+        return true;
+    }
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+    public void sortCounting(){
+        int max = arr[0];
+
+        for (int i = 1; i < capacity; i++) {
+            if (arr[i] > max){
+                max = arr[i];
+            }
+        }
+        int[] quantityValues = new int[max + 1];
+
+        for (int i = 0; i < capacity; i++) {
+            quantityValues[arr[i]]++;
+        }
+
+        for (int i = 0, count = 0; i < quantityValues.length; i++) {
+            if (quantityValues[i] != 0){
+                for (int j = 0; j < quantityValues[i]; j++, count++) {
+                    arr[count] = i;
+                }
+            }
+        }
+    }
+
+    public boolean deleteAll(){
+        for (int i = 0; i < capacity; i++) {
+            arr[i] = 0;
+        }
+        capacity = 0;
+        return true;
+    }
+
+    public boolean deleteAll(int val) {
+        for (int i = 0; i < capacity; i++) {
+            if (arr[i] == val){
+                System.arraycopy(arr, i + 1, arr, i, capacity - i - 1);
+                arr[capacity - 1] = 0;
+                --capacity;
+            }
+        }
+        return true;
+    }
+
+    public void insert(int idx, int value){
+        if (this.capacity == this.arr.length) {
+            int[] old = this.arr;
+            this.arr = new int[old.length * 2];
+            System.arraycopy(old, 0, arr, 0, old.length);
+        }
+        System.arraycopy(arr, idx, arr, idx + 1, capacity - idx );
+        arr[idx] = value;
+        ++capacity;
     }
 }

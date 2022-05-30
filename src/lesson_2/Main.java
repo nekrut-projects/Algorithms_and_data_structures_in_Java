@@ -2,47 +2,18 @@ package lesson_2;
 
 public class Main {
     public static void main(String[] args) {
-        MyArray arr = new MyArray(new int[]{1,2,3,4,5,6,7});
-        arr.display();
-        arr.append(10);
-        arr.display();
-        arr.delete(3);
-        arr.display();
+        MyArray arr = new MyArray(new int[]{1,21,3,9,4,5,6,7,3,5,11,1,2,4,8,9,10,5,1,4,5,6,7,8,9,10,5,13,5,18,61,2,4,8});
+        MyArray a = new MyArray(new int[]{3,5,1,1,2,42,8,3,8,4});
 
-//        long current = System.nanoTime();
-//        String s0 = "Ex";
-//        for (int i = 0; i < 1_00_000; i++) {
-//            s0 += i;
+//        for (int i = 0; i < 500; i++) {
+//            a.append(arr);
 //        }
-//        float delta = (System.nanoTime() - current) * 0.000000001f;
-//        System.out.println(delta + " sec");
-//
-//        current = System.nanoTime();
-//        StringBuilder sb = new StringBuilder("Ex");
-//        for (int i = 0; i < 1_00_000; i++) {
-//            sb.append(i);
-//        }
-//        delta = (System.nanoTime() - current) * 0.000000001f;
-//        System.out.println(delta + " sec");
-//
-//        System.out.println(s0.equals(sb.toString()));
-//
-//
-//        int[] arr1;
-//        int arr0[];
-//
-//        arr1 = new int[5];
-//        arr0 = new int[]{1,2,3,4,5};
-//        int[] arr2 = {1,2,3,4,5};
-//        Integer[] arr3 = {1,2,3,4,5};
-//
-//        arr3[2] = null;
-//
-//        System.out.println(arr0);
-//        System.out.println(Arrays.toString(arr2));
-//
-//        arr2[2] = Integer.MAX_VALUE;
-//
-//        System.out.println(Arrays.toString(arr2));
+
+        a.display();
+//        a.sortCounting();
+        a.sortBubble2();
+        a.display();
+        System.out.println(a.isSortedArray());
+
     }
 }
