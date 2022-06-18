@@ -1,5 +1,7 @@
 package lesson_3;
 
+import java.util.Arrays;
+
 public class Queue {
     protected int maxSize; // размер
     protected int[] queue; // место хранения
@@ -82,5 +84,10 @@ public class Queue {
 
     public int peek() {
         return queue[head];
+    }
+
+    @Override
+    public String toString() {
+        return "Q{" + Arrays.toString(queue) + '}';
     }
 }
